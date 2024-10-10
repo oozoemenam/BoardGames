@@ -1,16 +1,21 @@
+using BoardGames.Data;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(config =>
     {
-        config.WithOrigins(builder.Configuration["AllowedOrigins"]);
+        config.WithOrigins(builder.Configuration["AllowedOrigins"]!);
         config.AllowAnyHeader();
         config.AllowAnyMethod();
     });
@@ -72,10 +77,11 @@ app.MapGet("/error", () => Results.Problem()).RequireCors("AnyOrigin");
 
 app.MapGet("v{version:ApiVersion}/error/test",
     [ApiVersion("1.0")]
-    [ApiVersion("2.0")]
-    [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)]
-    () => { throw new Exception("test"); });
+[ApiVersion("2.0")]
+[EnableCors("AnyOrigin")]
+[ResponseCache(NoStore = true)]
+() =>
+    { throw new Exception("test"); });
 app.MapControllers();
 
 app.Run();
