@@ -4,3 +4,21 @@ GET {{BoardGames_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+
+POST https://portal.c3xpress.com/C3XService.svc/RateFinder
+Content-Type: application/json
+Accept: application/json
+
+{
+"AccountNo":"99999",
+"Destination":"AUH",
+"Dimension":"",
+"Origin":"DXB",
+"Product":"XPS",
+"ServiceType":"NOR",
+"UserName":"testuser",
+"Password":"21c3xpress#",
+"Weight":1,
+"Country":"AE"
+}

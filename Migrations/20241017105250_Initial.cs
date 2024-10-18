@@ -15,19 +15,21 @@ namespace BoardGames.Migrations
                 name: "BoardGames",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false),
-                    MinPlayers = table.Column<int>(type: "int", nullable: false),
-                    MaxPlayers = table.Column<int>(type: "int", nullable: false),
-                    PlayTime = table.Column<int>(type: "int", nullable: false),
-                    MinAge = table.Column<int>(type: "int", nullable: false),
-                    UsersRated = table.Column<int>(type: "int", nullable: false),
-                    RatingAverage = table.Column<decimal>(type: "decimal(4,2)", precision: 4, scale: 2, nullable: false),
-                    BGGRank = table.Column<int>(type: "int", nullable: false),
-                    ComplexityAverage = table.Column<decimal>(type: "decimal(4,2)", precision: 4, scale: 2, nullable: false),
-                    OwnedUsers = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
+                    Year = table.Column<int>(type: "INTEGER", nullable: false),
+                    MinPlayers = table.Column<int>(type: "INTEGER", nullable: false),
+                    MaxPlayers = table.Column<int>(type: "INTEGER", nullable: false),
+                    PlayTime = table.Column<int>(type: "INTEGER", nullable: false),
+                    MinAge = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsersRated = table.Column<int>(type: "INTEGER", nullable: false),
+                    RatingAverage = table.Column<decimal>(type: "TEXT", precision: 4, scale: 2, nullable: false),
+                    BGGRank = table.Column<int>(type: "INTEGER", nullable: false),
+                    ComplexityAverage = table.Column<decimal>(type: "TEXT", precision: 4, scale: 2, nullable: false),
+                    OwnedUsers = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,11 +40,11 @@ namespace BoardGames.Migrations
                 name: "Domains",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,11 +55,11 @@ namespace BoardGames.Migrations
                 name: "Mechanics",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,9 +70,9 @@ namespace BoardGames.Migrations
                 name: "BoardGames_Domains",
                 columns: table => new
                 {
-                    BoardGameId = table.Column<int>(type: "int", nullable: false),
-                    DomainId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    BoardGameId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DomainId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,9 +95,9 @@ namespace BoardGames.Migrations
                 name: "BoardGames_Mechanics",
                 columns: table => new
                 {
-                    BoardGameId = table.Column<int>(type: "int", nullable: false),
-                    MechanicId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    BoardGameId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MechanicId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
